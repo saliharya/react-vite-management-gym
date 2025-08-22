@@ -13,7 +13,6 @@ createRoot(document.getElementById("root")!).render(
       <Route path="login" element={<LoginPage />} />
       <Route path="register" element={<RegisterPage />} />
       <Route path="dasboard" element={<DashboardPage />} />
-      {/* Add other routes as needed */}
     </Routes>
     
    
