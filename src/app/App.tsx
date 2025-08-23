@@ -21,6 +21,7 @@ export function IndexPages() {
 return (
 <>
     <ThemeProvider>
+       <div className="flex flex-col items-center justify-center mx-auto max-w-6xl">
         <Navbar />
         <Hero />
         <Sponsors />
@@ -34,9 +35,9 @@ return (
         <Pricing />
         <Newsletter />
         <FAQ />
+      </div>
         <Footer />
         <ScrollToTop />
-
     </ThemeProvider>
 </>
 );
