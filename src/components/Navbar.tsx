@@ -95,7 +95,7 @@ export const Navbar = () => {
                   ))}
                   <a
                     rel="noreferrer noopener"
-                    href="https://github.com/leoMirandaa/shadcn-landing-page.git"
+                    href="https://github.com/fakhrirrahman"
                     target="_blank"
                     className={`w-[110px] border ${buttonVariants({
                       variant: "secondary",
