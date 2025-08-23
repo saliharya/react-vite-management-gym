@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/Navbar.tsx";
 import {ThemeProvider} from "@/components/theme-provider.tsx";
-import "./App.css";
+import "@/app/App.css";
 
 export function IndexPages() {
   return (
