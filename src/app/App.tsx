@@ -10,6 +10,10 @@ import { Cta } from "@/components/Cta";
 import { Testimonials } from "@/components/Testimonial";
 import { Team } from "@/components/Team";
 import { Pricing } from "@/components/Pricing";
+import { Newsletter } from "@/components/Newsletter";
+import { Footer } from "@/components/Footer";
+import { FAQ } from "@/components/FAQ";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 import "@/app/App.css";
 
@@ -28,6 +32,10 @@ return (
         <Testimonials />
         <Team />
         <Pricing />
+        <Newsletter />
+        <FAQ />
+        <Footer />
+        <ScrollToTop />
 
     </ThemeProvider>
 </>
