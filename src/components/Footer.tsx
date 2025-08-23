@@ -21,7 +21,7 @@ export const Footer = () => {
           <div>
             <a
               rel="noreferrer noopener"
-              href="#"
+              href="https://github.com/fakhrirrahman"
               className="opacity-60 hover:opacity-100"
             >
               Github
@@ -155,10 +155,10 @@ export const Footer = () => {
           <a
             rel="noreferrer noopener"
             target="_blank"
-            href="https://www.linkedin.com/in/leopoldo-miranda/"
+            href="https://www.linkedin.com/in/fahrirrahman"
             className="text-primary transition-all border-primary hover:border-b-2"
           >
-            Leo Miranda
+            We Go GYM
           </a>
         </h3>
       </section>

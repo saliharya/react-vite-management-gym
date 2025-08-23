@@ -61,7 +61,7 @@ export const HeroCards = () => {
           <div>
             <a
               rel="noreferrer noopener"
-              href="https://github.com/leoMirandaa"
+              href="https://github.com/fakhrirrahman"
               target="_blank"
               className={buttonVariants({
                 variant: "ghost",
@@ -73,7 +73,7 @@ export const HeroCards = () => {
             </a>
             <a
               rel="noreferrer noopener"
-              href="https://twitter.com/leo_mirand4"
+              href=""
               target="_blank"
               className={buttonVariants({
                 variant: "ghost",
@@ -94,7 +94,7 @@ export const HeroCards = () => {
 
             <a
               rel="noreferrer noopener"
-              href="https://www.linkedin.com/in/leopoldo-miranda/"
+              href="https://www.linkedin.com/in/fahrirrahman"
               target="_blank"
               className={buttonVariants({
                 variant: "ghost",
