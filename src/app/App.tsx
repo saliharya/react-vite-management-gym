@@ -6,7 +6,10 @@ import { Sponsors } from "@/components/Sponsor";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Features } from "@/components/Features";
 import { Services } from "@/components/Service";
-
+import { Cta } from "@/components/Cta";
+import { Testimonials } from "@/components/Testimonial";
+import { Team } from "@/components/Team";
+import { Pricing } from "@/components/Pricing";
 
 import "@/app/App.css";
 
@@ -21,6 +24,10 @@ return (
         <HowItWorks />
         <Features />
         <Services />
+        <Cta />
+        <Testimonials />
+        <Team />
+        <Pricing />
 
     </ThemeProvider>
 </>
