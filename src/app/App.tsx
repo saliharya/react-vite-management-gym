@@ -1,35 +1,46 @@
-import { useState } from "react";
-import reactLogo from "../assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import {ThemeProvider} from "@/components/theme-provider.tsx";
+import { Navbar } from "@/components/Navbar.tsx";
+import { About } from "@/components/About";
+import { Hero } from "@/components/Hero.tsx";
+import { Sponsors } from "@/components/Sponsor";
+import { HowItWorks } from "@/components/HowItWorks";
+import { Features } from "@/components/Features";
+import { Services } from "@/components/Service";
+import { Cta } from "@/components/Cta";
+import { Testimonials } from "@/components/Testimonial";
+import { Team } from "@/components/Team";
+import { Pricing } from "@/components/Pricing";
+import { Newsletter } from "@/components/Newsletter";
+import { Footer } from "@/components/Footer";
+import { FAQ } from "@/components/FAQ";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
-function App() {
-  const [count, setCount] = useState(0);
+import "@/app/App.css";
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+export function IndexPages() {
+return (
+<>
+    <ThemeProvider>
+       <div className="flex flex-col items-center justify-center mx-auto max-w-6xl">
+        <Navbar />
+        <Hero />
+        <Sponsors />
+        <About />
+        <HowItWorks />
+        <Features />
+        <Services />
+        <Cta />
+        <Testimonials />
+        <Team />
+        <Pricing />
+        <Newsletter />
+        <FAQ />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  );
+        <Footer />
+        <ScrollToTop />
+    </ThemeProvider>
+</>
+);
 }
 
-export default App;
+export default IndexPages;
