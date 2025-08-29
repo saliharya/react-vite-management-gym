@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Sidebar from "@/components/layout/Sidebar";
 import Navbar from "@/components/layout/Navbar";
+import MemberForm from "./create";
 
 interface Member {
   id: number | null;
@@ -9,93 +10,39 @@ interface Member {
   plan: string;
 }
 
-interface MemberFormProps {
-  onSave: (member: Member) => void;
-  editingMember?: Member;
-}
-
-function MemberForm({ onSave, editingMember }: MemberFormProps) {
-  const [form, setForm] = useState<Member>(
-    editingMember || { id: null, name: "", age: "", plan: "" }
-  );
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!form.name || !form.age || !form.plan) return;
-    onSave(form);
-    setForm({ id: null, name: "", age: "", plan: "" });
-  };
-
-  return (
-    <div className="bg-gray-900 p-6 rounded-2xl shadow-md">
-      <h2 className="text-lg font-bold mb-4">
-        {form.id ? "✏️ Edit Member" : "➕ Tambah Member"}
-      </h2>
-
-      <form onSubmit={handleSubmit} className="space-y-3">
-        <input
-          type="text"
-          name="name"
-          value={form.name}
-          onChange={handleChange}
-          placeholder="Nama"
-          className="w-full p-3 rounded-xl text-black"
-        />
-        <input
-          type="text"
-          name="age"
-          value={form.age}
-          onChange={handleChange}
-          placeholder="Umur"
-          className="w-full p-3 rounded-xl text-black"
-        />
-        <input
-          type="text"
-          name="plan"
-          value={form.plan}
-          onChange={handleChange}
-          placeholder="Paket"
-          className="w-full p-3 rounded-xl text-black"
-        />
-        <button
-          type="submit"
-          className="bg-blue-500 px-4 py-2 rounded-xl text-white hover:bg-blue-600 transition"
-        >
-          Simpan
-        </button>
-      </form>
-    </div>
-  );
-}
-
 export default function MemberPage() {
   const [members, setMembers] = useState<Member[]>([]);
-  const [editingMember, setEditingMember] = useState<Member | undefined>(
-    undefined
-  );
+  const [editingMember, setEditingMember] = useState<Member | undefined>(undefined);
+  const [showModal, setShowModal] = useState(false);
 
   const handleSave = (member: Member) => {
     if (member.id) {
-      setMembers((prev) =>
-        prev.map((m) => (m.id === member.id ? member : m))
-      );
+      setMembers((prev) => prev.map((m) => (m.id === member.id ? member : m)));
     } else {
       const newMember = { ...member, id: Date.now() };
       setMembers((prev) => [...prev, newMember]);
     }
     setEditingMember(undefined);
+    setShowModal(false);
   };
 
   const handleEdit = (member: Member) => {
     setEditingMember(member);
+    setShowModal(true);
   };
 
   const handleDelete = (id: number | null) => {
     setMembers((prev) => prev.filter((m) => m.id !== id));
+  };
+
+  const handleAdd = () => {
+    setEditingMember(undefined);
+    setShowModal(true);
+  };
+
+  const handleCancel = () => {
+    setEditingMember(undefined);
+    setShowModal(false);
   };
 
   return (
@@ -109,15 +56,21 @@ export default function MemberPage() {
 
         {/* Content */}
         <div className="p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Form tambah/edit */}
-          <div className="lg:col-span-1">
-            <MemberForm onSave={handleSave} editingMember={editingMember} />
-          </div>
-
           {/* Tabel Members */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3">
             <div className="bg-gray-900 p-6 rounded-2xl shadow-md">
-              <h2 className="text-xl font-bold mb-4">📋 Daftar Member</h2>
+              {/* Header + Tombol */}
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-xl font-bold">📋 Daftar Member</h2>
+                <button
+                  onClick={handleAdd}
+                  className="bg-green-500 px-4 py-2 rounded-lg hover:bg-green-600 transition mb-4 inline-block"
+                >
+                  + Tambah Member
+                </button>
+              </div>
+
+              {/* Tabel */}
               <table className="w-full border-collapse border border-gray-700 rounded-xl overflow-hidden">
                 <thead>
                   <tr className="bg-gray-800">
@@ -171,6 +124,28 @@ export default function MemberPage() {
             </div>
           </div>
         </div>
+
+        {/* Modal */}
+        {showModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60">
+            <div className="relative w-full max-w-lg mx-auto">
+              <div className="bg-gray-900 rounded-3xl shadow-2xl p-6 border border-green-500">
+                <MemberForm
+                  onSave={handleSave}
+                  onCancel={handleCancel}
+                  editingMember={editingMember}
+                />
+                <button
+                  onClick={handleCancel}
+                  className="absolute top-2 right-2 text-gray-400 hover:text-white text-xl font-bold"
+                  aria-label="Close"
+                >
+                  ×
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
