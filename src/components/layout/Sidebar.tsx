@@ -81,10 +81,10 @@ export default function Sidebar() {
           </p>
           <nav className="mt-2 flex flex-col gap-1">
             <a
-              href="#"
+              href="/member"
               className="flex items-center gap-2 px-4 py-2 hover:bg-gray-800 rounded"
             >
-              <Book size={18} /> Documentation
+              <Book size={18} /> Member
             </a>
             <a
               href="#"

@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import LoginPage from "@/pages/login/page.tsx";
 import RegisterPage from "@/pages/register/page.tsx";
 import DashboardPage from "@/pages/Dashboard/page.tsx";
+import MemberPage from "@/pages/member/page.tsx";
 import "@/app/Index.css";
 
 createRoot(document.getElementById("root")!).render(
@@ -13,6 +14,9 @@ createRoot(document.getElementById("root")!).render(
       <Route path="login" element={<LoginPage />} />
       <Route path="register" element={<RegisterPage />} />
       <Route path="dasboard" element={<DashboardPage />} />
+      <Route path="member" element={<MemberPage />} />
+
+      
     </Routes>
     
    
